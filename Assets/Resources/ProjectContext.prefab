@@ -67,6 +67,7 @@ Transform:
   m_Children:
   - {fileID: 8080096144125064725}
   - {fileID: 6505234300281969186}
+  - {fileID: 7527779466235162986}
   m_Father: {fileID: 3744927663143676032}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -222,6 +223,50 @@ Transform:
   m_Father: {fileID: 5565864208726156706}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3876777390915744742
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7527779466235162986}
+  - component: {fileID: 2789108947428639784}
+  m_Layer: 0
+  m_Name: SaveInstaller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7527779466235162986
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3876777390915744742}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1191013430735501133}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2789108947428639784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3876777390915744742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e103b52aaaa7ebc4fab29e4c4ffd61db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4201778011392102585
 GameObject:
   m_ObjectHideFlags: 0
@@ -262,6 +307,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4236802684158820509}
+  - component: {fileID: 8209614029297683005}
+  - component: {fileID: 5687759307823867955}
   m_Layer: 0
   m_Name: SaveManager
   m_TagString: Untagged
@@ -284,6 +331,30 @@ Transform:
   m_Father: {fileID: 5565864208726156706}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8209614029297683005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4353113545870329240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5537df8a34aa2d4488d997d3f063b725, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5687759307823867955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4353113545870329240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 676d963f78d8f1c49aab7e4aab015f37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4400297759876231544
 GameObject:
   m_ObjectHideFlags: 0
@@ -435,6 +506,7 @@ MonoBehaviour:
   _monoInstallers:
   - {fileID: 7856578104486469637}
   - {fileID: 6829613112132609274}
+  - {fileID: 2789108947428639784}
   _installerPrefabs: []
   _parentNewObjectsUnderContext: 1
   _editorReflectionBakingCoverageMode: 0
