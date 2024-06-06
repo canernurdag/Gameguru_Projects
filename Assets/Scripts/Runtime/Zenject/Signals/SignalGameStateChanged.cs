@@ -1,4 +1,4 @@
-using Assets.Scripts.Runtime.Managers.GameManager;
+using Assets.Scripts.Runtime.Managers._GameManager;
 
 namespace Assets.Scripts.Runtime.Zenject.Signals
 {
