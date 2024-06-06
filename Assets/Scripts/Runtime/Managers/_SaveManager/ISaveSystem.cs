@@ -1,4 +1,4 @@
-namespace Assets.Scripts.Runtime.Managers.SaveManager
+namespace Assets.Scripts.Runtime.Managers._SaveManager
 {
 	public interface ISaveSystem
 	{

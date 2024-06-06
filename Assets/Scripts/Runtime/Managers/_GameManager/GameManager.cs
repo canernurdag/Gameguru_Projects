@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
-namespace Assets.Scripts.Runtime.Managers.GameManager
+namespace Assets.Scripts.Runtime.Managers._GameManager
 {
 	public sealed class GameManager : MonoBehaviour
 	{

@@ -1,10 +1,9 @@
-using Assets.Scripts.Runtime.Managers;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
-namespace Assets.Scripts.Runtime.Managers.SaveManager
+namespace Assets.Scripts.Runtime.Managers._SaveManager
 {
 	public class JsonSaveSystem : MonoBehaviour, ISaveSystem
 	{

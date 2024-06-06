@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
-namespace Assets.Scripts.Runtime.Managers.SaveManager
+namespace Assets.Scripts.Runtime.Managers._SaveManager
 {
 	public class SaveManager : MonoBehaviour
 	{

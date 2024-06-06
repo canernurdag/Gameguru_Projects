@@ -1,4 +1,4 @@
-namespace Assets.Scripts.Runtime.Managers.GameManager
+namespace Assets.Scripts.Runtime.Managers._GameManager
 {
 	public enum GameStateType
 	{
