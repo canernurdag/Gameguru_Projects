@@ -1,6 +1,7 @@
 using Assets.Scripts.Runtime.Managers._AudioManager;
 using Assets.Scripts.Runtime.Managers._GameManager;
 using Assets.Scripts.Runtime.Managers._SaveManager;
+using Assets.Scripts.Runtime.Managers._SceneManager;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,5 +14,6 @@ public class ProjectContextManagerInstaller : MonoInstaller
 		Container.Bind<GameManager>().FromComponentInHierarchy().AsSingle();
 		Container.Bind<SaveManager>().FromComponentInHierarchy().AsSingle();
 		Container.Bind<AudioManager>().FromComponentInHierarchy().AsSingle();
+		Container.Bind<SceneLoadManager>().FromComponentInHierarchy().AsSingle();
 	}
 }

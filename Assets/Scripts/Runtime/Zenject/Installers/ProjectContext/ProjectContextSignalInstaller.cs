@@ -12,5 +12,6 @@ public class ProjectContextSignalInstaller : MonoInstaller
 
 		//SIGNAL DECLARATION
 		Container.DeclareSignal<SignalGameStateChanged>();
+		Container.DeclareSignal<SignalSceneChanged>();
 	}
 }
