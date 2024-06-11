@@ -29,7 +29,9 @@ public class GridController : MonoBehaviour
 		checkList.Add(selectedGridSlot);
 		clearList.Add(selectedGridSlot);
 
-		while(checkList.Count>0)
+		bool isThereAnyMatch = false;
+
+		while (checkList.Count>0)
 		{
 			var gridSlotToBeChecked = checkList.ElementAt(0);
 			gridSlotToBeChecked.SetIsChecked(true);
@@ -48,6 +50,8 @@ public class GridController : MonoBehaviour
 
 			GridSlot upSlot = null;
 			GridSlot downSlot = null;
+
+
 
 			if (left >= 0)
 			{
@@ -91,8 +95,7 @@ public class GridController : MonoBehaviour
 			//RESET Matched GridSlots - IsFull
 			if (matchList.Count > 0)
 			{
-				_matchCount++;
-				_signalBus.Fire(new SignalMatchCountChanged(_matchCount));
+				isThereAnyMatch = true;
 				matchList.Distinct();
 				matchList.ForEach(x => x.SetIsFull(false));
 				gridSlotToBeChecked.SetIsFull(false);
@@ -107,6 +110,11 @@ public class GridController : MonoBehaviour
 			selectedGridSlot.SetIsChecked(false);
 		}
 
+		if(isThereAnyMatch )
+		{
+			_matchCount++;
+			_signalBus.Fire(new SignalMatchCountChanged(_matchCount));
+		}
 	}
 
 }
