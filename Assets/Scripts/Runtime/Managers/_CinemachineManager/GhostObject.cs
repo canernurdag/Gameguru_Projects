@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class GhostObject : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+	private Transform _targetTransform;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+	private void LateUpdate()
+	{
+		if (_targetTransform)
+		{
+			transform.position = _targetTransform.transform.position;
+		}
+	}
+
+	public void SetTargetTransform(Transform targetTransform)
+	{
+		_targetTransform = targetTransform;
+	}
 }
