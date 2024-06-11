@@ -25,5 +25,9 @@ public class ProjectContextUiInstaller : MonoInstaller
 			.FromComponentSibling()
 			.WhenInjectedInto<UiManager>();
 
+		Container.Bind<UiGridController>()
+			.FromComponentInHierarchy()
+			.AsSingle();
+
 	}
 }

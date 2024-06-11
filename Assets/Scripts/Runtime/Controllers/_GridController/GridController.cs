@@ -7,11 +7,14 @@ using Zenject;
 public class GridController : MonoBehaviour
 {
 	private IGridCreator _gridCreator;
+	private SignalBus _signalBus;
+	private int _matchCount = 0;
 
 	[Inject]
-	public void Consturct(IGridCreator gridCreator)
+	public void Consturct(IGridCreator gridCreator, SignalBus signalBus)
 	{
 		_gridCreator = gridCreator;
+		_signalBus = signalBus;
 	}
 	
 
@@ -88,6 +91,8 @@ public class GridController : MonoBehaviour
 			//RESET Matched GridSlots - IsFull
 			if (matchList.Count > 0)
 			{
+				_matchCount++;
+				_signalBus.Fire(new SignalMatchCountChanged(_matchCount));
 				matchList.Distinct();
 				matchList.ForEach(x => x.SetIsFull(false));
 				gridSlotToBeChecked.SetIsFull(false);

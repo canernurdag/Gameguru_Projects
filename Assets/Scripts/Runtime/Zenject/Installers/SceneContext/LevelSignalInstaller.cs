@@ -9,12 +9,15 @@ public class LevelSignalInstaller : MonoInstaller
 {
 	public override void InstallBindings()
 	{
-		SignalBusInstaller.Install(Container);
 
 		//SIGNAL DECLARATION
 		Container.DeclareSignal<SignalCameraOthSizeChanged>();
 		Container.BindSignal<SignalCameraOthSizeChanged>()
 			.ToMethod<CinemachineManager>(x => x.SetCurrentVcamOrthSize)
+			.FromResolve();
+
+		Container.BindSignal<SignalGridRebuild>()
+			.ToMethod<GridCreator>(x => x.CreateGrid)
 			.FromResolve();
 
 	}

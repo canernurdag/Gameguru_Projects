@@ -12,6 +12,10 @@ public class LevelGridInstaller : MonoInstaller
 			.FromComponentSibling()
 			.WhenInjectedInto<GridController>();
 
+		Container.Bind<GridCreator>()
+			.FromComponentInHierarchy()
+			.AsCached();
+
 		Container.Bind<GridController>()
 			.FromComponentInHierarchy()
 			.WhenInjectedInto<GridSlotSelector>();

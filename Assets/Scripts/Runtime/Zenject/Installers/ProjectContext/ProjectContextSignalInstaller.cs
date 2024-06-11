@@ -13,5 +13,13 @@ public class ProjectContextSignalInstaller : MonoInstaller
 		//SIGNAL DECLARATION
 		Container.DeclareSignal<SignalGameStateChanged>();
 		Container.DeclareSignal<SignalSceneChanged>();
+		Container.DeclareSignal<SignalGridRebuild>();
+		Container.DeclareSignal<SignalMatchCountChanged>();
+
+		Container.BindSignal<SignalMatchCountChanged>()
+			.ToMethod<UiGridController>(x => x.SetMatchCount)
+			.FromResolve();
+
+
 	}
 }

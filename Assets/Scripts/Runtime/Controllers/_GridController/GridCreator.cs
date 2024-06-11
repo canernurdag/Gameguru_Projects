@@ -28,7 +28,10 @@ public class GridCreator : MonoBehaviour, IGridCreator
 
 
 	[Inject]
-	public void Consturct(GridSlot.GridSlotFactory gridSlotFactory, List<GridSlot> gridSlotsFromEditor, SignalBus signalBus)
+	public void Consturct(
+		GridSlot.GridSlotFactory gridSlotFactory,
+		List<GridSlot> gridSlotsFromEditor,
+		SignalBus signalBus)
 	{
 		_gridSlotFactory = gridSlotFactory;
 		_gridSlotsFromEditor = gridSlotsFromEditor;
@@ -58,8 +61,15 @@ public class GridCreator : MonoBehaviour, IGridCreator
 		}
 	}
 
+	public void CreateGrid(SignalGridRebuild signalGridRebuild)
+	{
+		CreateGrid(signalGridRebuild.Dimension);
+	}
+
 	public void CreateGrid(int dimensionCount)
 	{
+		if (dimensionCount < 0) return;
+
 		SetGridSlotDimensionSize();
 
 		DestroyGrid();
@@ -133,6 +143,7 @@ public class GridCreator : MonoBehaviour, IGridCreator
 	[ExecuteInEditMode]
 	public void CreateGridEditor(int dimensionCount)
 	{
+		if (dimensionCount < 0) return;
 		SetGridSlotDimensionSize();
 
 		DestroyGrid();
