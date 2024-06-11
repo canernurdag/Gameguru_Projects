@@ -69,6 +69,7 @@ public class GridCreator : MonoBehaviour, IGridCreator
 	public void CreateGrid(int dimensionCount)
 	{
 		if (dimensionCount < 0) return;
+		DimensionCount = dimensionCount;
 
 		SetGridSlotDimensionSize();
 
@@ -144,6 +145,7 @@ public class GridCreator : MonoBehaviour, IGridCreator
 	public void CreateGridEditor(int dimensionCount)
 	{
 		if (dimensionCount < 0) return;
+		DimensionCount = dimensionCount;
 		SetGridSlotDimensionSize();
 
 		DestroyGrid();
