@@ -7,6 +7,8 @@ public class SceneCinemachineInstaller : MonoInstaller
 {
 	public override void InstallBindings()
 	{
-
+		Container.Bind<GhostObject>()
+			.FromComponentInHierarchy()
+			.AsCached();
 	}
 }
