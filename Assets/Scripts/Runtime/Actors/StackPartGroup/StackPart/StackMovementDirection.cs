@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StackController : MonoBehaviour
+public enum StackMovementDirection 
 {
-    
+    Left = 0,
+    Right = 1
 }
