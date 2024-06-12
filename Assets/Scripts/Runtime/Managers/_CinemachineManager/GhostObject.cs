@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GhostObject : MonoBehaviour
 {
-	private Transform _targetTransform;
+	[SerializeField]private Transform _targetTransform;
 
 	private void LateUpdate()
 	{
@@ -17,5 +17,10 @@ public class GhostObject : MonoBehaviour
 	public void SetTargetTransform(Transform targetTransform)
 	{
 		_targetTransform = targetTransform;
+	}
+
+	public void SetTargetTransform(SignalGhostObjectTargetChanged signalGhostObjectTargetChanged)
+	{
+		_targetTransform = signalGhostObjectTargetChanged.TargetTransform;
 	}
 }
