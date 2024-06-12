@@ -45,7 +45,7 @@ public class CharacterController : MonoBehaviour
 		});
 	}
 
-	public void ActiveCharacterToFinish(SignalOnFinishlSeqStart signalOnFinishlineSeq)
+	public void ActiveCharacterToFinish(SignalOnFinishSeqStart signalOnFinishlineSeq)
 	{
 		ActiveCharacter.CharacterAnimatorController.SetCurrentAnimatorState(ActiveCharacter.CharacterAnimatorController.Run);
 		ActiveCharacter.CharacterMovement.Move(signalOnFinishlineSeq.Finish.CharacterPosition.position,

@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SignalOnFinishlSeqStart
+public class SignalOnFinishSeqStart
 {
 	public Finish Finish;
 
-	public SignalOnFinishlSeqStart(Finish finish)
+	public SignalOnFinishSeqStart(Finish finish)
 	{
 		Finish = finish;
 	}

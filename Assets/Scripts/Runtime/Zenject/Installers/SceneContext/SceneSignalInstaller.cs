@@ -15,7 +15,7 @@ public class SceneSignalInstaller : MonoInstaller
 		Container.DeclareSignal<SignalOnSetActiveStackPart>();
 		Container.DeclareSignal<SignalOnStreakIncrease>();
 		Container.DeclareSignal<SignalOnStreakBreak>();
-		Container.DeclareSignal<SignalOnFinishlSeqStart>();
+		Container.DeclareSignal<SignalOnFinishSeqStart>();
 		Container.DeclareSignal<SignalOnVCamChanged>();
 
 
@@ -69,10 +69,12 @@ public class SceneSignalInstaller : MonoInstaller
 			.ToMethod<CinemachineManager>(x => x.SetVcam)
 			.FromResolve();
 
-		Container.BindSignal<SignalOnFinishlSeqStart>()
-		.ToMethod<CharacterController>(x => x.ActiveCharacterToFinish)
+		Container.BindSignal<SignalOnFinishSeqStart>()
+		.	ToMethod<CharacterController>(x => x.ActiveCharacterToFinish)
 			.FromResolve();
 
-
+		Container.BindSignal<SignalOnFinishSeqStart>()
+			.ToMethod<CinemachineManager>(x => x.StartCameraOrbitSeq)
+			.FromResolve();
 	}
 }

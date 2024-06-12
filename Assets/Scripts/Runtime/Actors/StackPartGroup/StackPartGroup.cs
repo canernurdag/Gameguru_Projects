@@ -60,7 +60,8 @@ public class StackPartGroup : MonoBehaviour
 		}
 		else if(stackPart== null)
 		{
-			_signalBus.Fire(new SignalOnFinishlSeqStart(Finish));
+			_signalBus.Fire(new SignalOnFinishSeqStart(Finish));
+			
 		}
 
 	}
