@@ -5,9 +5,12 @@ using UnityEngine;
 
 namespace Assets.Scripts.Runtime.Controllers._AnimatorController
 {
-	public class AnimatorController : MonoBehaviour
+	public class AnimatorController : MonoBehaviour, IAnimatorController
 	{
-		[field: SerializeField] public Animator Animator { get; private set; }
+		[field: SerializeField] public Animator Animator { get; set; }
+		public virtual string Idle { get; set ; }
+		public virtual string Run { get; set; }
+		public virtual string Dance { get; set; }
 
 		protected Tween _parameterTween;
 		protected Tween _layerTween;
