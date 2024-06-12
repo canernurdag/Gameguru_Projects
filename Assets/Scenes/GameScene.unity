@@ -9429,7 +9429,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d729abd0715b0c14ea66a071f493ea95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _stackPartGroupPrefab: {fileID: 1821699560322800434, guid: f7ce42718c6f6e34882638af68cd0721,
+  _stackPartGroupPrefab: {fileID: 6631821059190645272, guid: f7ce42718c6f6e34882638af68cd0721,
     type: 3}
   _characterPrefab: {fileID: 7551728816134709620, guid: 16ba4d92bf6523940ba9da3abd062586,
     type: 3}
