@@ -20,10 +20,11 @@ public class SceneSignalInstaller : MonoInstaller
 		Container.DeclareSignal<SignalOnVCamChanged>();
 		Container.DeclareSignal<SignalOnLevelSucess>();
 		Container.DeclareSignal<SignalOnLevelFail>();
+		Container.DeclareSignal<SignalOnLevelStarted>();
 
 
 		Container.BindSignal<SignalOnInputDown>()
-			.ToMethod<StackGroupController>(x=>x.SplitTheActiveStackPart)
+			.ToMethod<DefaultStackGroupController>(x=>x.SplitTheActiveStackPart)
 			.FromResolve();
 
 		Container.BindSignal<SignalGhostObjectTargetChanged>()
@@ -32,19 +33,15 @@ public class SceneSignalInstaller : MonoInstaller
 
 
 		Container.BindSignal<SignalOnNewStackPartGroupPlaced>()
-			.ToMethod<CharacterController>(x => x.PlaceCharacterToActiveStackPartGroup)
-			.FromResolve();
-
-		//Container.BindSignal<SignalOnNewStackPartGroupPlaced>()
-		//	.ToMethod<CharacterController>(x => x.PlaceCharacterToActiveStackPartGroup)
-		//	.FromResolve();
-
-		Container.BindSignal<SignalOnSetActiveStackPart>()
-			.ToMethod<StackGroupController>(x => x.ActivateTheStackPart)
+			.ToMethod<DefaultCharacterController>(x => x.PlaceCharacterToActiveStackPartGroup)
 			.FromResolve();
 
 		Container.BindSignal<SignalOnSetActiveStackPart>()
-			.ToMethod<CharacterController>(x => x.ActiveCharacterToNextStackPart)
+			.ToMethod<DefaultStackGroupController>(x => x.ActivateTheStackPart)
+			.FromResolve();
+
+		Container.BindSignal<SignalOnSetActiveStackPart>()
+			.ToMethod<DefaultCharacterController>(x => x.ActiveCharacterToNextStackPart)
 			.FromResolve();
 
 		Container.BindSignal<SignalOnStreakIncrease>()
@@ -69,7 +66,7 @@ public class SceneSignalInstaller : MonoInstaller
 			.FromResolve();
 
 		Container.BindSignal<SignalOnFinishSeqStart>()
-		.	ToMethod<CharacterController>(x => x.ActiveCharacterToFinish)
+		.	ToMethod<DefaultCharacterController>(x => x.ActiveCharacterToFinish)
 			.FromResolve();
 
 		Container.BindSignal<SignalOnFinishSeqStart>()
@@ -88,6 +85,10 @@ public class SceneSignalInstaller : MonoInstaller
 
 		Container.BindSignal<SignalOnSetActiveStackPart>()
 			.ToMethod<UiManager>(x => x.CloseSuccessAndFailUi)
+			.FromResolve();
+
+		Container.BindSignal<SignalOnLevelStarted>()
+			.ToMethod<LevelController>(x => x.StartNextLevel)
 			.FromResolve();
 	}
 }

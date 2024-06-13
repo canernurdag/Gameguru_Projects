@@ -10,13 +10,23 @@ public class SceneLevelInstaller : MonoInstaller
 		Container.Bind<LevelController>()
 			.FromComponentInHierarchy()
 			.AsCached();
-		
-		Container.Bind<CharacterController>()
+
+
+		Container.Bind<ICharacterController>()
+			.To<DefaultCharacterController>()
 			.FromComponentInHierarchy()
 			.AsCached();
 
+		Container.Bind<DefaultCharacterController>()
+			.FromComponentInHierarchy()
+			.AsCached();
 
-		Container.Bind<StackGroupController>()
+		Container.Bind<IStackGroupController>()
+			.To<DefaultStackGroupController>()
+			.FromComponentInHierarchy()
+			.AsCached();
+
+		Container.Bind<DefaultStackGroupController>()
 			.FromComponentInHierarchy()
 			.AsCached();
 

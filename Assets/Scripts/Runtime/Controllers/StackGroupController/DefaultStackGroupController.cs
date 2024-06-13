@@ -5,9 +5,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
-public class StackGroupController : MonoBehaviour
+public class DefaultStackGroupController : MonoBehaviour, IStackGroupController
 {
-	public StackPartGroup ActiveStackPartGroup { get; private set; } = null;
+	public StackPartGroup ActiveStackPartGroup { get;  set; } = null;
 
 	private List<StackPartGroup> _stackPartGroups = new();
 

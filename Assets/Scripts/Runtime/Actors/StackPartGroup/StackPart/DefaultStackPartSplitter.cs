@@ -9,7 +9,7 @@ public class DefaultStackPartSplitter : MonoBehaviour, IStackPartSplitter
 	#region DI REF
 	private StackPart _stackPart;
 	private StackPart.StackPartFactory _stackPartFactory;
-	private StackGroupController _stackGroupController;
+	private IStackGroupController _stackGroupController;
 	private SignalBus _signalBus;
 	#endregion
 
@@ -22,7 +22,7 @@ public class DefaultStackPartSplitter : MonoBehaviour, IStackPartSplitter
 	public void Construct(
 		StackPart stackPart,
 		StackPart.StackPartFactory stackPartFactory,
-		StackGroupController stackGroupController,
+		IStackGroupController stackGroupController,
 		SignalBus signalBus)
 	{
 		_stackPart = stackPart;

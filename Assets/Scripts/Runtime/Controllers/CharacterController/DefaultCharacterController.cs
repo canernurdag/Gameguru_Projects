@@ -4,14 +4,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
-public class CharacterController : MonoBehaviour
+public class DefaultCharacterController : MonoBehaviour, ICharacterController
 {
 	#region DI REF
 	private Character.CharacterFactory _characterFactory;
 	private SignalBus _signalBus;
 	private CinemachineManager _cinemachineManager;
 	#endregion
-	public Character ActiveCharacter { get; private set; }
+	public Character ActiveCharacter { get;  set; }
 	
 	[Inject]
 	public void Construct(Character.CharacterFactory characterFactory, SignalBus signalBus, CinemachineManager cinemachineManager)

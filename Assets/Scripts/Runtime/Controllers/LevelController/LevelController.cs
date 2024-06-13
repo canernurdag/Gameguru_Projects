@@ -9,8 +9,8 @@ public class LevelController : MonoBehaviour, IStreakController
 {
 
 	#region DI REF
-	private CharacterController _characterController;
-	private StackGroupController _stackGroupController;
+	private ICharacterController _characterController;
+	private IStackGroupController _stackGroupController;
 	private GameManager _gameManager;
 
 	#endregion
@@ -21,8 +21,8 @@ public class LevelController : MonoBehaviour, IStreakController
 
 	[Inject]
 	public void Construct(
-		StackGroupController stackController,
-		CharacterController characterController,
+		IStackGroupController stackController,
+		ICharacterController characterController,
 		GameManager gameManager
 		)
 	{
@@ -39,7 +39,7 @@ public class LevelController : MonoBehaviour, IStreakController
 	private void InitTheFirstLevel()
 	{
 		_characterController.CreateActiveCharacter();
-		InitNextLevel();
+		StartNextLevel(null);
 
 	}
 
@@ -58,7 +58,7 @@ public class LevelController : MonoBehaviour, IStreakController
 		SetStreakCount(0);
 	}
 
-	public void InitNextLevel()
+	public void StartNextLevel(SignalOnLevelStarted signalOnLevelStarted)
 	{
 		_stackGroupController.AddNewStackPartGroup();
 		_gameManager.SetCurrentGameStateType(GameStateType.GameStarted);

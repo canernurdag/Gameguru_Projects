@@ -19,15 +19,18 @@ namespace Assets.Scripts.Runtime.Managers._CinemachineManager
 
 		#region DI REF
 		public IStateDrivenCameraController StateDrivenCameraController { get; private set; }
-		private LevelController _levelController;
+		private SignalBus _signalBus;
 		#endregion
 
 
 		[Inject]
-		public void Construct(IStateDrivenCameraController stateDrivenCameraController, LevelController levelController)
+		public void Construct(
+			IStateDrivenCameraController stateDrivenCameraController,
+			LevelController levelController,
+			SignalBus signalBus)
 		{
 			StateDrivenCameraController = stateDrivenCameraController;
-			_levelController = levelController;
+			_signalBus = signalBus;
 		}
 
 		public void SetVcam(SignalOnVCamChanged signalOnVCamChanged)
@@ -44,7 +47,6 @@ namespace Assets.Scripts.Runtime.Managers._CinemachineManager
 		{
 			var orbital = _orbitVCAM.GetCinemachineComponent<CinemachineOrbitalTransposer>();
 			orbital.m_Heading.m_Bias = 0f;
-			float sensitivity = 1;
 			while(orbital.m_Heading.m_Bias < 360)
 			{
 				orbital.m_Heading.m_Bias += Time.deltaTime* _orbitSpeed;
@@ -54,7 +56,7 @@ namespace Assets.Scripts.Runtime.Managers._CinemachineManager
 
 			yield return new WaitForSeconds(2);
 			SetVcam(new SignalOnVCamChanged(GameVCAM));
-			_levelController.InitNextLevel();	
+			_signalBus.Fire(new SignalOnLevelStarted());
 		
 		}
 	}
