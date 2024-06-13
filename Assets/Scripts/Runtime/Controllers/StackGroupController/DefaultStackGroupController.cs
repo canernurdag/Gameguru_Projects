@@ -1,7 +1,10 @@
 using Assets.Scripts.Runtime.Managers._GameManager;
+using Assets.Scripts.Runtime.Managers._SceneManager;
 using Assets.Scripts.Runtime.Zenject.Signals;
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using Zenject;
 
@@ -13,14 +16,17 @@ public class DefaultStackGroupController : MonoBehaviour, IStackGroupController
 
 	private StackPartGroup.StackPartGroupFactory _stackPartGroupFactory;
 	private SignalBus _signalBus;
+	private SceneLoadManager _sceneLoadManager;
 
 
 	[Inject]
 	public void Construct(StackPartGroup.StackPartGroupFactory stackPartGroupFactory,
-		SignalBus signalBus)
+		SignalBus signalBus,
+		SceneLoadManager sceneLoadManager)
 	{
 		_stackPartGroupFactory = stackPartGroupFactory;
 		_signalBus = signalBus;
+		_sceneLoadManager = sceneLoadManager;
 	}
 
 	public void AddNewStackPartGroup()
@@ -71,6 +77,10 @@ public class DefaultStackGroupController : MonoBehaviour, IStackGroupController
 			_signalBus.Fire(new SignalOnLevelFail());
 			activeStackPart.StackPartPhysicsProvider.SetPhysicsActiveness(true);
 
+			DOVirtual.DelayedCall(3f, () =>
+			{
+				_sceneLoadManager.OpenTargetScene(true, 1);
+			});
 			return;
 		}
 
