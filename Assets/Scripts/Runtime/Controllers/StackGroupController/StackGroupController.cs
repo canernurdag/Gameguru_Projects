@@ -39,6 +39,8 @@ public class StackGroupController : MonoBehaviour
 			newStackPartGroup.transform.position = previousStackPartGroup.NextStackPartGroupPosition.position;
 		}
 
+		newStackPartGroup.InitStackPartGroup();
+
 		_signalBus.Fire(new SignalOnNewStackPartGroupPlaced(newStackPartGroup));
 	}
 
