@@ -1,3 +1,4 @@
+using Assets.Scripts.Runtime.Managers._GameManager;
 using Assets.Scripts.Runtime.Zenject.Signals;
 using System.Collections;
 using System.Collections.Generic;
@@ -13,5 +14,9 @@ public class ProjectContextSignalInstaller : MonoInstaller
 		//SIGNAL DECLARATION
 		Container.DeclareSignal<SignalGameStateChanged>();
 		Container.DeclareSignal<SignalSceneChanged>();
+
+		Container.BindSignal<SignalGameStateChanged>()
+			.ToMethod<GameManager>(x => x.SetCurrentGameStateType)
+			.FromResolve();
 	}
 }

@@ -30,11 +30,14 @@ namespace Assets.Scripts.Runtime.Managers._GameManager
 #endif
 		}
 
+		public void SetCurrentGameStateType(SignalGameStateChanged signalGameStateChanged)
+		{
+			CurrentGameStateType = signalGameStateChanged.GameStateType;
+		}
+
 		public void SetCurrentGameStateType(GameStateType gameStateType)
 		{
 			CurrentGameStateType = gameStateType;
-			_signalBus.Fire(new SignalGameStateChanged(gameStateType));
-
 		}
 
 	}

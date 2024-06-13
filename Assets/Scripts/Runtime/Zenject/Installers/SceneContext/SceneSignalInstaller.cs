@@ -1,4 +1,5 @@
 using Assets.Scripts.Runtime.Managers._CinemachineManager;
+using Assets.Scripts.Runtime.Managers._UiManager;
 using Assets.Scripts.Runtime.Zenject.Signals;
 using System.Collections;
 using System.Collections.Generic;
@@ -17,6 +18,8 @@ public class SceneSignalInstaller : MonoInstaller
 		Container.DeclareSignal<SignalOnStreakBreak>();
 		Container.DeclareSignal<SignalOnFinishSeqStart>();
 		Container.DeclareSignal<SignalOnVCamChanged>();
+		Container.DeclareSignal<SignalOnLevelSucess>();
+		Container.DeclareSignal<SignalOnLevelFail>();
 
 
 		Container.BindSignal<SignalOnInputDown>()
@@ -29,16 +32,12 @@ public class SceneSignalInstaller : MonoInstaller
 
 
 		Container.BindSignal<SignalOnNewStackPartGroupPlaced>()
-			.ToMethod<StackPartGroup>(x => x.InitStackPartGroup)
-			.FromResolve();
-
-		Container.BindSignal<SignalOnNewStackPartGroupPlaced>()
 			.ToMethod<CharacterController>(x => x.PlaceCharacterToActiveStackPartGroup)
 			.FromResolve();
 
-		Container.BindSignal<SignalOnNewStackPartGroupPlaced>()
-			.ToMethod<CharacterController>(x => x.PlaceCharacterToActiveStackPartGroup)
-			.FromResolve();
+		//Container.BindSignal<SignalOnNewStackPartGroupPlaced>()
+		//	.ToMethod<CharacterController>(x => x.PlaceCharacterToActiveStackPartGroup)
+		//	.FromResolve();
 
 		Container.BindSignal<SignalOnSetActiveStackPart>()
 			.ToMethod<StackGroupController>(x => x.ActivateTheStackPart)
@@ -75,6 +74,20 @@ public class SceneSignalInstaller : MonoInstaller
 
 		Container.BindSignal<SignalOnFinishSeqStart>()
 			.ToMethod<CinemachineManager>(x => x.StartCameraOrbitSeq)
+			.FromResolve();
+
+
+		Container.BindSignal<SignalOnLevelSucess>()
+			.ToMethod<UiManager>(x => x.ActivateSuccessUi)
+			.FromResolve();
+
+
+		Container.BindSignal<SignalOnLevelFail>()
+			.ToMethod<UiManager>(x => x.ActivateFailUi)
+			.FromResolve();
+
+		Container.BindSignal<SignalOnSetActiveStackPart>()
+			.ToMethod<UiManager>(x => x.CloseSuccessAndFailUi)
 			.FromResolve();
 	}
 }

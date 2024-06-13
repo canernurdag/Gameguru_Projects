@@ -68,6 +68,7 @@ public class StackGroupController : MonoBehaviour
 		if (Mathf.Abs(distance) > totalHalfWidth) 
 		{
 			_signalBus.Fire(new SignalGameStateChanged(GameStateType.GameFinished));
+			_signalBus.Fire(new SignalOnLevelFail());
 			activeStackPart.StackPartPhysicsProvider.SetPhysicsActiveness(true);
 
 			return;

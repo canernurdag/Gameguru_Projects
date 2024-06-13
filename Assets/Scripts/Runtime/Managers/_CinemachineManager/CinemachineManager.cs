@@ -19,13 +19,15 @@ namespace Assets.Scripts.Runtime.Managers._CinemachineManager
 
 		#region DI REF
 		public IStateDrivenCameraController StateDrivenCameraController { get; private set; }
+		private LevelController _levelController;
 		#endregion
 
 
 		[Inject]
-		public void Construct(IStateDrivenCameraController stateDrivenCameraController)
+		public void Construct(IStateDrivenCameraController stateDrivenCameraController, LevelController levelController)
 		{
 			StateDrivenCameraController = stateDrivenCameraController;
+			_levelController = levelController;
 		}
 
 		public void SetVcam(SignalOnVCamChanged signalOnVCamChanged)
@@ -52,6 +54,7 @@ namespace Assets.Scripts.Runtime.Managers._CinemachineManager
 
 			yield return new WaitForSeconds(2);
 			SetVcam(new SignalOnVCamChanged(GameVCAM));
+			_levelController.InitNextLevel();	
 		
 		}
 	}

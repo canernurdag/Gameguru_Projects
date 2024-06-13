@@ -1,3 +1,5 @@
+using Assets.Scripts.Runtime.Managers._GameManager;
+using Assets.Scripts.Runtime.Zenject.Signals;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,10 +38,8 @@ public class StackPartGroup : MonoBehaviour
 	}
 
 
-	public void InitStackPartGroup(SignalOnNewStackPartGroupPlaced signalOnNewStackPartGroupPlaced)
+	public void InitStackPartGroup()
 	{
-		if (signalOnNewStackPartGroupPlaced.StackPartGroup != this) return;
-
 		for (int i = 2; i < StackParts.Count; i++)
 		{
 			var stackPart = StackParts[i];
@@ -61,7 +61,9 @@ public class StackPartGroup : MonoBehaviour
 		else if(stackPart== null)
 		{
 			_signalBus.Fire(new SignalOnFinishSeqStart(Finish));
-			
+			_signalBus.Fire(new SignalGameStateChanged(GameStateType.GameFinished));
+			_signalBus.Fire(new SignalOnLevelSucess());
+
 		}
 
 	}
