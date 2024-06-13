@@ -35,7 +35,7 @@ public class DefaultStackPartSplitter : MonoBehaviour, IStackPartSplitter
 
 	public void Split(float percentage, StackPart previosStackPart)
 	{
-		if(percentage < _thresholdPercentagePerfectPlacement)
+		if(Mathf.Abs(percentage) < _thresholdPercentagePerfectPlacement)
 		{
 			percentage = 0;
 
